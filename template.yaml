@@ -39,7 +39,7 @@ Parameters:
     NoEcho: true
   CustomDomain:
     Type: String
-    Description: Cstom domain added to client # only configures cognito for now. Manually handle domain on amplify console for client
+    Description: Custom domain added to client # only configures cognito for now. Manually handle domain on amplify console for client
     Default: none
 
 ###################################################################################################
