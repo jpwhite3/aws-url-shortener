@@ -133,11 +133,11 @@ Resources:
       SupportedIdentityProviders:
         - COGNITO
       CallbackURLs:
-        - !Join [ ".", [ https://master, !GetAtt AmplifyApp.DefaultDomain ]]
+        - !Join [ ".", [ https://main, !GetAtt AmplifyApp.DefaultDomain ]]
         - !If [IsLocal, http://localhost:8080, !Ref "AWS::NoValue"]
         - !If [HasCustomDomain, !Ref CustomDomain, !Ref "AWS::NoValue"]
       LogoutURLs:
-        - !Join [ ".", [ https://master, !GetAtt AmplifyApp.DefaultDomain ]]
+        - !Join [ ".", [ https://main, !GetAtt AmplifyApp.DefaultDomain ]]
         - !If [IsLocal, http://localhost:8080, !Ref "AWS::NoValue"]
         - !If [HasCustomDomain, !Ref CustomDomain, !Ref "AWS::NoValue"]
       AllowedOAuthFlowsUserPoolClient: true
@@ -220,9 +220,9 @@ Resources:
   AmplifyBranch:
     Type: AWS::Amplify::Branch
     Properties:
-      BranchName: master
+      BranchName: main
       AppId: !GetAtt AmplifyApp.AppId
-      Description: Master Branch
+      Description: Main Branch
       EnableAutoBuild: true
 
 ###################################################################################################
@@ -482,7 +482,7 @@ Outputs:
 
   ClientDomainAddress:
     Description: Domain for client
-    Value: !Join [ ".", [ https://master, !GetAtt AmplifyApp.DefaultDomain ]]
+    Value: !Join [ ".", [ https://main, !GetAtt AmplifyApp.DefaultDomain ]]
 
   AmplifyAppId:
     Description: Amplify application ID
@@ -499,5 +499,5 @@ Outputs:
   AmplifyDeployCommand:
     Description: Command to deploy the Amplify application
     Value: !Sub
-      - aws amplify start-job --app-id ${AmplifyID} --branch-name master --job-type RELEASE
+      - aws amplify start-job --app-id ${AmplifyID} --branch-name main --job-type RELEASE
       - AmplifyID: !GetAtt AmplifyApp.AppId
