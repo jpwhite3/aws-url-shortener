@@ -210,6 +210,7 @@ Resources:
             preBuild:
               commands:
                 - cd client
+                - npm install
                 - npm ci
             build:
               commands:
@@ -478,7 +479,7 @@ Outputs:
   VueAppAPIRoot:
     Description: API Gateway endpoint URL for linker
     Value: !Sub "https://${CloudFrontDistro.DomainName}"
- 
+
   VueAppAuthDomain: 
     Description: Domain used for authentication
     Value: !Sub https://${AppName}-${AWS::AccountId}.auth.${AWS::Region}.amazoncognito.com
